@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
       <div className="container mx-auto flex items-center justify-center">
         <div className="flex items-center space-x-4">
           
-            <img className="h-16 w-16" src={logo} alt="Logo" />
+            <img className="h-16 w-16 rounded-lg" src={logo} alt="Logo" />
           
             <h1 className="text-3xl font-bold">BlurrSmith.ai</h1>
           

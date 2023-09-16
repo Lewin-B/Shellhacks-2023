@@ -26,7 +26,7 @@ const Buttons: React.FC = () => {
     <>
       <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
         
-      <img className='h-[500px] w-[500px]'
+      <img className=' rounded-full h-[500px] w-[500px]'
       src= "https://media.post.rvohealth.io/wp-content/uploads/2019/02/Blurred-vision-and-headache-What-Causes-Them-Both-_732x549-thumbnail.jpg" />
       
         <div className='flex flex-row pt-5'>

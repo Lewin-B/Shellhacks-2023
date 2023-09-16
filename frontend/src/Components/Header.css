@@ -1,9 +1,13 @@
 .header-left {
     float: left;
+    padding: 20px;
+    color: white;
 }
 
 .header-right {
     float: right;
+    padding: 20px;
+    color: white;
 }
 
 .headerImg{

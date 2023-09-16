@@ -18,8 +18,37 @@ const Buttons: React.FC = () => {
 
   }
   
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+
+    if (!selectedFile) {
+      alert('please select file');
+      return
+    } 
+
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
     //Pass File to Flask backend
+    try {
+      const response = await fetch('/upload', {
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert('Image uploaded successfully.');
+      } else {
+        alert('Failed to upload image.');
+      }
+
+    } catch(error) {
+      console.error('Error: ', error);
+    }
   }
 
   return (

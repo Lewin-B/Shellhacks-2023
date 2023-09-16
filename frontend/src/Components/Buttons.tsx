@@ -46,6 +46,13 @@ const Buttons: React.FC = () => {
             Take a photo...
           </button>
         </div>
+
+        <div className='pt-5'>
+          <button className="bg-dark-gray text-blue-300 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
+              Submit...
+          </button>
+        </div>
+
       </form>
     </>
   );

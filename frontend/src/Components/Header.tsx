@@ -1,23 +1,28 @@
-import logo from './Logo-1.jpg'
+import logo from './Logo-1.jpg';
 import './Header.css';
 
-interface HeaderProps{
-    title: string;
-    description: string;
+interface HeaderProps {
+  title: string;
+  description: string;
 }
-const Header: React.FC<HeaderProps> = ({ title, description }) => {
-    return (
-      <header>
-        <div className="header-left">
-          <img className = "headerImg" src = {logo}></img>
-          <h1>{title}</h1>  
-        </div>
-  
-        <p className="header-right">
-          {description}
-        </p>
-      </header>
-    );
-  };
 
+const Header: React.FC<HeaderProps> = ({ title, description }) => {
+  return (
+    <header className="bg-gray-200 p-4 text-center">
+      <div className="container mx-auto flex items-center justify-center">
+        <div className="flex items-center space-x-4">
+          
+            <img className="h-16 w-16" src={logo} alt="Logo" />
+          
+            <h1 className="text-3xl font-bold">BlurrSmith.</h1>
+          
+        </div>
+      </div>
+    </header>
+  );
+};
+
+
+        
+       
 export default Header;

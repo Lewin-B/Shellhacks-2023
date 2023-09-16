@@ -4,7 +4,7 @@ const Footer = () => {
     const year = new Date().getFullYear();
     return (
       <footer style={{ height: '25px', lineHeight: '50px'}}>
-        {`Copyright © Your Company Name ${year}`}
+        {`Copyright © Smith.ai ${year}`}
       </footer>
     );
   };

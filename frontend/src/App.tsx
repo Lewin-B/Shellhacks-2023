@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
+import Header from './Components/Header';
 
 function App() {
   return (
-    <div>hello</div>
+    <Header title = "Personify"
+    description='Welcome to the site'></Header>
   );
 }
 

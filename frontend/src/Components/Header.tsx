@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
     return (
       <header>
         <div className="header-left">
-          <img src = {logo}></img>
+          <img className = "headerImg" src = {logo}></img>
           <h1>{title}</h1>  
         </div>
   

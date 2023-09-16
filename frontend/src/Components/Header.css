@@ -5,3 +5,8 @@
 .header-right {
     float: right;
 }
+
+.headerImg{
+    max-width: 200px;
+    border-radius: 25%;
+}

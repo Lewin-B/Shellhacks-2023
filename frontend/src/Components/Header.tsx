@@ -1,4 +1,4 @@
-//import logoImg from './logo.png';
+import logo from './Logo-1.jpg'
 import './Header.css';
 
 interface HeaderProps{
@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
     return (
       <header>
         <div className="header-left">
-          <p>"Logo goes here</p>
+          <img className = "headerImg" src = {logo}></img>
           <h1>{title}</h1>  
         </div>
   

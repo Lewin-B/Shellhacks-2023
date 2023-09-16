@@ -5,9 +5,11 @@ import Buttons from './Components/Buttons';
 
 function App() {
   return (
+    <div>
     <Header title = "Personify"
     description='Welcome to the site'/>
     <Buttons />
+    </div>
   );
 }
 

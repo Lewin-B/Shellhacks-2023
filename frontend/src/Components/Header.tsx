@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
           
             <img className="h-16 w-16" src={logo} alt="Logo" />
           
-            <h1 className="text-3xl font-bold">BlurrSmith.</h1>
+            <h1 className="text-3xl font-bold">BlurrSmith.ai</h1>
           
         </div>
       </div>

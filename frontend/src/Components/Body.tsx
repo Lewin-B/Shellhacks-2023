@@ -5,7 +5,7 @@ const Body: React.FC = () => {
   return (
     <>
         <div className="bg-dark-blue h-screen ">
-            <Buttons />
+            <Buttons/>
         </div>
     </>
   );

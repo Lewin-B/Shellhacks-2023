@@ -6,12 +6,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'dark-blue': '#151F42', // Add the custom color with the desired hex code
+        'dark-blue': '#113763', // Add the custom color with the desired hex code
         'dark-gray': '#4e5050',
+        'hover-color': '#212121',
       },
-      text: {
-        'blue-green': '#58f0ed', // Corrected color value with quotes
-      },
+
     },
   },
   plugins: [],

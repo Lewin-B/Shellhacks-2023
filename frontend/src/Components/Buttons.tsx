@@ -44,7 +44,7 @@ const Buttons: React.FC = () => {
     const url = 'https://face-and-plate-blurer.p.rapidapi.com/img-anonymization/v1/results';
     const data = new FormData();
     data.append('image', selectedFile);
-    
+    console.log(apiKey);
     const options = {
       method: 'POST',
       headers: {

@@ -21,7 +21,6 @@ const Buttons: React.FC = () => {
 
   // Function to handle file selection
   const handleFileSelect = (e: React.ChangeEvent<any>) => {
-    console.log(e.target.files);
     const file = e.target.files[0]; // Get the first selected file
     setSelectedFile(file);
   };
@@ -95,12 +94,10 @@ const Buttons: React.FC = () => {
     
     try {
       setIsLoading(true);
-      console.log("Loading Status: ", isLoading);
+      
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result)
       if (response.ok) {
-        console.log("Response Success")
         //Extract blurred image
         setBlur(result['results'][0]['entities'][0]['image']);
         setShow(true);

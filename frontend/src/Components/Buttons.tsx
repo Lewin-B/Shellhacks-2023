@@ -2,18 +2,21 @@ import React, {useState, useRef} from 'react';
 const Buttons: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
-
+  const [uploadedImage, setUploadedImage] = useState('');
+  const [message, setMessage] = useState('');
 
   // Function to handle file selection
   const handleFileSelect = (e: React.ChangeEvent<any>) => {
+    console.log(e.target.files);
     const file = e.target.files[0]; // Get the first selected file
     setSelectedFile(file);
+    console.log(file[0])
   };
   
   const handleClick = (e: React.ChangeEvent<any>) => {
     //Prevent Form Submission
     e.preventDefault();
-    
+
     //Click the hidden input
     if (hiddenFileInput.current) {
       hiddenFileInput.current.click();
@@ -30,20 +33,21 @@ const Buttons: React.FC = () => {
     } 
 
     const formData = new FormData();
-    formData.append('image', selectedFile);
+    formData.append('file', selectedFile);
 
     //Pass File to Flask backend
     try {
       const response = await fetch('http://127.0.0.1:5000/upload', {
         mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
+        console.log("response ok")
+        const blob = await response.blob();
+        const imageURL = URL.createObjectURL(blob);
+        setUploadedImage(imageURL);
         alert('Image uploaded successfully.');
       } else {
         alert('Failed to upload image.');
@@ -70,6 +74,8 @@ const Buttons: React.FC = () => {
             type="file"
             accept=".jpg, .jpeg, .png, .gif"
             className="hidden"
+            name='image'
+            value=''
             onChange={handleFileSelect}
           />
           <div className="p-5"></div>

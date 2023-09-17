@@ -10,7 +10,10 @@ const Buttons: React.FC = () => {
     setSelectedFile(file);
   };
   
-  const handleClick = () => {
+  const handleClick = (e: React.ChangeEvent<any>) => {
+    //Prevent Form Submission
+    e.preventDefault();
+    
     //Click the hidden input
     if (hiddenFileInput.current) {
       hiddenFileInput.current.click();
@@ -31,7 +34,7 @@ const Buttons: React.FC = () => {
 
     //Pass File to Flask backend
     try {
-      const response = await fetch('/upload', {
+      const response = await fetch('http://127.0.0.1:5000/upload', {
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json'

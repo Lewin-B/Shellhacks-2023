@@ -1,16 +1,22 @@
 import React, {useState, useRef} from 'react';
+import Popup from './Popup';
+
+
 const Buttons: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
-  const [uploadedImage, setUploadedImage] = useState('');
-  const [message, setMessage] = useState('');
+  const [blur, setBlur] = useState('');
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  }
 
   // Function to handle file selection
   const handleFileSelect = (e: React.ChangeEvent<any>) => {
     console.log(e.target.files);
     const file = e.target.files[0]; // Get the first selected file
     setSelectedFile(file);
-    console.log(file[0])
   };
   
   const handleClick = (e: React.ChangeEvent<any>) => {
@@ -32,36 +38,43 @@ const Buttons: React.FC = () => {
       return
     } 
 
-    const formData = new FormData();
-    formData.append('file', selectedFile);
 
-    //Pass File to Flask backend
+    //Make api call to blur faces
+    const url = 'https://face-and-plate-blurer.p.rapidapi.com/img-anonymization/v1/results';
+    const data = new FormData();
+    data.append('image', selectedFile);
+    
+    const options = {
+      method: 'POST',
+      headers: {
+        'X-RapidAPI-Key': '575044d7e7msh63d5681d86dc37cp1f68b8jsn41e00de28768',
+        'X-RapidAPI-Host': 'face-and-plate-blurer.p.rapidapi.com'
+      },
+      body: data
+    };
+    
     try {
-      const response = await fetch('http://127.0.0.1:5000/upload', {
-        mode: 'cors',
-        method: 'POST',
-        body: formData,
-      });
-
+      const response = await fetch(url, options);
+      const result = await response.json();
+      console.log(result)
       if (response.ok) {
-        console.log("response ok")
-        const blob = await response.blob();
-        const imageURL = URL.createObjectURL(blob);
-        setUploadedImage(imageURL);
-        alert('Image uploaded successfully.');
+        console.log("Response Success")
+        //Extract blurred image
+        setBlur(result['results'][0]['entities'][0]['image']);
+        setShow(true);
       } else {
-        alert('Failed to upload image.');
+        console.log('error extracting image')
       }
-
-    } catch(error) {
-      console.error('Error: ', error);
+    } catch (error) {
+      console.error(error);
     }
+    
   }
 
   return (
     <>
       <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
-        
+      <Popup trigger={show} onClose={handleClose} img={`data:image/jpeg;base64,${blur}`} />
       <img className=' pt-5 rounded-full h-[300px] w-[300px]'
       src= "https://media.post.rvohealth.io/wp-content/uploads/2019/02/Blurred-vision-and-headache-What-Causes-Them-Both-_732x549-thumbnail.jpg" />
       

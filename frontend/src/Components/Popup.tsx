@@ -15,11 +15,6 @@ const Popup: React.FC<PopupProps> = ({ trigger, onClose, img }) => {
     anchor.click();
   };
 
-  // Function to handle sharing on social media (example: Twitter)
-  const handleShareOnTwitter = () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=Check%20out%20this%20image!&url=${img}`;
-    window.open(twitterUrl, '_blank');
-  };
 
   return trigger ? (
     <>

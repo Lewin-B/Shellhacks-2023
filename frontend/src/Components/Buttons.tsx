@@ -75,13 +75,9 @@ const Buttons: React.FC = () => {
     } 
     //Set loading to true
     else{
-      alert('Loading...'
+      alert('Submission Succesfull Click to Continue...'
       )
     }
-
-    setTimeout(() => {
-      window.alert('')
-    }, 2000)
 
     //Make api call to blur faces
     const url = 'https://face-and-plate-blurer.p.rapidapi.com/img-anonymization/v1/results';

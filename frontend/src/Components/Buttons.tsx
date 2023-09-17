@@ -95,6 +95,9 @@ const Buttons: React.FC = () => {
         console.log('error extracting image')
       }
     } catch (error) {
+      if (error instanceof TypeError) {
+        alert(error)
+      }
       console.error(error);
     }
     

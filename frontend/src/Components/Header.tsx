@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ title, description }) => {
   return (
-    <header className="bg-gray-200 p-4 text-center">
+    <header className="bg-gray-200 p-4 text-center pd-2">
       <div className="container mx-auto flex items-center justify-center">
         <div className="flex items-center space-x-4">
           

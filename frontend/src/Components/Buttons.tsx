@@ -1,14 +1,20 @@
 import React, {useState, useRef} from 'react';
 import Popup from './Popup';
+import Spinner from './Spinner'
+
+
 
 
 const Buttons: React.FC = () => {
+  //Adding state for loading
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedFile, setSelectedFile] = useState(null);
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const [blur, setBlur] = useState('');
   const [show, setShow] = useState(false);
   const apiKey = process.env.REACT_APP_API_KEY ?? '';
 
+  // Handles pop up close
   const handleClose = () => {
     setShow(false);
   }
@@ -67,7 +73,15 @@ const Buttons: React.FC = () => {
       alert('please select file');
       return
     } 
+    //Set loading to true
+    else{
+      alert('Loading...'
+      )
+    }
 
+    setTimeout(() => {
+      window.alert('')
+    }, 2000)
 
     //Make api call to blur faces
     const url = 'https://face-and-plate-blurer.p.rapidapi.com/img-anonymization/v1/results';
@@ -81,8 +95,11 @@ const Buttons: React.FC = () => {
       },
       body: data
     };
+
     
     try {
+      setIsLoading(true);
+      console.log("Loading Status: ", isLoading);
       const response = await fetch(url, options);
       const result = await response.json();
       console.log(result)
@@ -105,6 +122,7 @@ const Buttons: React.FC = () => {
 
   return (
     <>
+      <Spinner trigger={isLoading}/>
       <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
       <Popup trigger={show} onClose={handleClose} img={`data:image/jpeg;base64,${blur}`} />
       <img className=' pt-5 rounded-full h-[300px] w-[300px]'

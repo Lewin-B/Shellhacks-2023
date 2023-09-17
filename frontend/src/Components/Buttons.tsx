@@ -20,6 +20,7 @@ const Buttons: React.FC = () => {
     setSelectedFile(file);
   };
   
+  //Triggers file selection
   const handleClick = (e: React.ChangeEvent<any>) => {
     //Prevent Form Submission
     e.preventDefault();
@@ -30,7 +31,35 @@ const Buttons: React.FC = () => {
     }
 
   }
+
+  // Function to take a photo from the camera and upload it
+  const handleTakePhoto = async () => {
+    try {
+      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+      // Create a video element to display the camera feed
+      const video = document.createElement('video');
+      video.srcObject = mediaStream;
+
+      // Play the video to display the camera feed
+      video.play();
+
+      // Capture a frame from the camera feed
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d')?.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Stop the camera feed
+      mediaStream.getTracks().forEach((track) => track.stop());
+
+    } catch (error) {
+      console.error('Error accessing the camera:', error);
+    }
+  };
   
+  
+  //Handles the form submission
   const handleSubmit = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 
@@ -44,7 +73,6 @@ const Buttons: React.FC = () => {
     const url = 'https://face-and-plate-blurer.p.rapidapi.com/img-anonymization/v1/results';
     const data = new FormData();
     data.append('image', selectedFile);
-    console.log(apiKey);
     const options = {
       method: 'POST',
       headers: {
@@ -79,7 +107,7 @@ const Buttons: React.FC = () => {
       <img className=' pt-5 rounded-full h-[300px] w-[300px]'
       src= "https://media.post.rvohealth.io/wp-content/uploads/2019/02/Blurred-vision-and-headache-What-Causes-Them-Both-_732x549-thumbnail.jpg" />
       
-        <div className='flex flex-row pt-12'>
+        <div className='flex flex-col pt-12'>
           <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5" onClick={handleClick}>
             Upload Image...
           </button>
@@ -92,14 +120,7 @@ const Buttons: React.FC = () => {
             value=''
             onChange={handleFileSelect}
           />
-          <div className="p-5"></div>
-          
-          <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
-            Take a photo...
-          </button>
-        </div>
-
-        <div className='pt-5'>
+          <div className="p-3"></div>
           <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
               Submit...
           </button>

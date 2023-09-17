@@ -7,7 +7,7 @@ import Footer from "./Components/Footer"
 function App() {
   return (
     <>
-      <Header title = "Personify"
+      <Header title = "BlurrSmith.ai"
       description='Welcome to the site'></Header>
       <Body />
       <Footer/>

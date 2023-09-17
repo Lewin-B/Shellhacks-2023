@@ -7,6 +7,7 @@ const Buttons: React.FC = () => {
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const [blur, setBlur] = useState('');
   const [show, setShow] = useState(false);
+  const apiKey = process.env.REACT_APP_API_KEY ?? '';
 
   const handleClose = () => {
     setShow(false);
@@ -47,7 +48,7 @@ const Buttons: React.FC = () => {
     const options = {
       method: 'POST',
       headers: {
-        'X-RapidAPI-Key': '575044d7e7msh63d5681d86dc37cp1f68b8jsn41e00de28768',
+        'X-RapidAPI-Key': apiKey,
         'X-RapidAPI-Host': 'face-and-plate-blurer.p.rapidapi.com'
       },
       body: data

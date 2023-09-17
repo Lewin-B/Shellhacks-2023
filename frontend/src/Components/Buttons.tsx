@@ -58,11 +58,11 @@ const Buttons: React.FC = () => {
     <>
       <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
         
-      <img className=' rounded-full h-[350px] w-[350px]'
+      <img className=' pt-5 rounded-full h-[300px] w-[300px]'
       src= "https://media.post.rvohealth.io/wp-content/uploads/2019/02/Blurred-vision-and-headache-What-Causes-Them-Both-_732x549-thumbnail.jpg" />
       
-        <div className='flex flex-row pt-5'>
-          <button className="bg-dark-gray text-blue-300 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5" onClick={handleClick}>
+        <div className='flex flex-row pt-12'>
+          <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5" onClick={handleClick}>
             Upload Image...
           </button>
           <input
@@ -74,13 +74,13 @@ const Buttons: React.FC = () => {
           />
           <div className="p-5"></div>
           
-          <button className="bg-dark-gray text-blue-300 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
+          <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
             Take a photo...
           </button>
         </div>
 
         <div className='pt-5'>
-          <button className="bg-dark-gray text-blue-300 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
+          <button className="bg-dark-gray text-teal-400 hover:bg-hover-color font-bold hover:text-white py-2 rounded-full pr-5 pl-5">
               Submit...
           </button>
         </div>
